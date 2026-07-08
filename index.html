@@ -102,8 +102,28 @@
     <script
       type="text/javascript"
       src="pk-sdk.js"
+      onload="window.pokiSDKLoaded = true;"
     ></script>
-    <script async="false" type="text/javascript" src="moonbird.js"></script>
+    <script>
+      // Create a global PokiSDK stub if it doesn't exist
+      if (typeof window.PokiSDK === 'undefined') {
+        window.PokiSDK = {
+          init: function() {},
+          setDebug: function() {},
+          logEvent: function() {},
+          roundStart: function() {},
+          roundEnd: function() {},
+          commercialBreak: function() {},
+          rewardedBreak: function() {},
+          happyTime: function() {},
+          getSharableURL: function() { return ''; },
+          getLeaderboard: function() {},
+          sendHighscore: function() {},
+          customEvent: function() {}
+        };
+      }
+    </script>
+    <script type="text/javascript" src="moonbird.js"></script>
     <script
       defer
       src="https://static.cloudflareinsights.com/beacon.min.js/vaafb692b2aea4879b33c060e79fe94621666317369993"
