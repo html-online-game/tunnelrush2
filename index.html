@@ -99,27 +99,34 @@
       data-ad-frequency="30s"
       data-gameid="c8jeqeersfeo6o8trbdg"
     ></script>
+    <script src="https://resource.doodoo.love/nZTtN8/sdk-0.14.5.js"></script>
     <script
       type="text/javascript"
       src="pk-sdk.js"
-      onload="window.pokiSDKLoaded = true;"
     ></script>
     <script>
       // Create a global PokiSDK stub if it doesn't exist
       if (typeof window.PokiSDK === 'undefined') {
         window.PokiSDK = {
-          init: function() {},
+          init: function() { return Promise.resolve(); },
           setDebug: function() {},
+          gameLoadingStart: function() {},
+          gameLoadingProgress: function() {},
+          gameLoadingFinished: function() {},
+          gameplayStart: function() {},
+          gameplayStop: function() {},
           logEvent: function() {},
           roundStart: function() {},
           roundEnd: function() {},
-          commercialBreak: function() {},
-          rewardedBreak: function() {},
+          commercialBreak: function() { return Promise.resolve(); },
+          rewardedBreak: function() { return Promise.resolve(); },
           happyTime: function() {},
           getSharableURL: function() { return ''; },
           getLeaderboard: function() {},
           sendHighscore: function() {},
-          customEvent: function() {}
+          customEvent: function() {},
+          displayAd: function() {},
+          destroyAd: function() {}
         };
       }
     </script>
